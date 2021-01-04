@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 0.75;
+  background-color: #363a3f;
+  height: 100vh;
+}
+
+.main-input {
+  color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px;
+  border-top: 1px solid gray;
+  background-color: #474b53;
+}
+.main-input > form > input {
+  padding: 15px;
+  background: transparent;
+  width: 100%;
+  border: none;
+  outline-width: 0;
+  color: white;
+  font-size: large;
+}
+.main-input > form {
+  flex: 1;
+}
+
+.main-inputButton {
+  display: none;
+}
+
+.main-inputIcons > .MuiSvgIcon-root {
+  padding: 5px;
+}
+.main-messages {
+  flex: 1;
+  overflow: scroll;
+}
+.main-messages {
+  display: flex;
+  flex-direction: column;
+}
+.main-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.main-messages {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

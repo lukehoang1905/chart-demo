@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
+import DemoChart from "./DemoChart";
+import PublicNavbar from "./PublicNavbar/PublicNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import SideBar from "./Sidebar";
-import Main from "./Main";
-import "./App.css";
 
 const weekDays = [
   "Monday",
@@ -15,12 +12,10 @@ const weekDays = [
   "Saturday",
   "Sunday",
 ];
-
 const App = () => {
   const [numbers, setNumbers] = useState([13, 14, 34, 34, 63, 34, 53]);
   const [labels, setLabels] = useState(weekDays);
   const [entry, setEntry] = useState("");
-  const [chart, setChart] = useState("");
 
   //This is where we set general rules
   const data = {
@@ -30,7 +25,7 @@ const App = () => {
         //this is where data for PER X-horizonatl line , including border style and color of those element
         label: `# of Sales`,
         data: numbers,
-        backgroundColor: [],
+        backgroundColor: ["rgba(0, 0, 0, 0.3)"],
       },
       //   {
       //     //this is where data for PER X-horizonatl line , including border style and color of those element
@@ -66,15 +61,24 @@ const App = () => {
     setEntry(e.target.value);
   };
 
-  const handleChangeChart = (type) => {
-    setChart(type);
-  };
-
   return (
-    <div className="app">
-      <SideBar handleChangeChart={handleChangeChart} />
-      <Main data={data} chart={chart} />
-    </div>
+    <>
+      <PublicNavbar />
+      <form onSubmit={handleSubmitNumber}>
+        <label htmlFor="sales">Sales</label>
+        <input
+          id="sales"
+          value={entry}
+          onChange={handleEntry}
+          type="Number"
+        ></input>
+        <button type="submit">Submit</button>
+      </form>
+      {numbers.map((e, idx) => (
+        <li key={e + idx}>{e}</li>
+      ))}
+      <DemoChart data={data} />
+    </>
   );
 };
 
